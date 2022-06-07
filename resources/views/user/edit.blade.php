@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? auth()->user()->name }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,6 +29,7 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">Avatar</label>
 
                             <div class="col-md-6">
+                                <img src="{{ asset(auth()->user()->avatar) }}" alt="" height="128px">
                                 <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" required autocomplete="current-avatar">
 
                                 @error('avatar')
